@@ -1,0 +1,11 @@
+{
+  "include": ["bin/*.js","lib/**/*","plugins/**/*","index.js"],
+  "exclude":["node_modules/**/*"],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
+    "outDir": "typings"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "plugins": ["plugins/markdown"],
+  "recurseDepth": 10,
+  "sourceType": "module",
+  "source": {
+    "include": ["lib/","index.js"],
+    "exclude":["test","node_modules"],
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "template": "templates/default", 
+    "encoding": "utf8",              
+    "destination": "./docs/",         
+    "recurse": true,
+    "readme":"README.md"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "ipfs-cid",
+  "version": "0.0.0",
+  "description": "sdk for create ipfs cid ",
+  "main": "index.js",
+  "types": "typings/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "docs": "jsdoc -c conf.json",
+    "build": "tsc -d",
+    "build:w": "tsc -d -w",
+    "lint": "eslint --fix .",
+    "check": "npm run build && npm run lint",
+    "test": "npm run check && npm run test:cov",
+    "test:watch": "node --experimental-vm-modules ./node_modules/.bin/jest --watch",
+    "test:cov": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage"
+  },
+  "files": [
+    "typings",
+    "package.json",
+    "lib",
+    "index.js"
+  ],
+  "keywords": [
+    "ipfs-cid",
+    "ipfs",
+    "cid"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
+  },
+  "author": "kiba.x.zhao",
+  "license": "MIT",
+  "dependencies": {
+    "cids": "^1.1.7",
+    "debug": "^4.3.2",
+    "ipfs-unixfs": "^4.0.3",
+    "ipld-dag-pb": "^0.22.2",
+    "lodash": "^4.17.21",
+    "multihashing-async": "^2.1.2"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.6",
+    "@types/faker": "^5.5.6",
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.171",
+    "@types/node": "^16.3.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.30.0",
+    "eslint-config-egg": "^9.0.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "faker": "^5.5.3",
+    "husky": "^7.0.0",
+    "jest": "^27.0.6",
+    "jsdoc": "^3.6.7",
+    "typescript": "^4.3.5"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    },
+    "transform": {},
+    "coverageProvider": "v8",
+    "collectCoverageFrom": [
+      "lib/**/*.js",
+      "!**/index.js"
+    ]
+  }
+}
