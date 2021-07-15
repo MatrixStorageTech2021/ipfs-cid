@@ -7,6 +7,7 @@
 
 
 import { jest } from '@jest/globals';
+import CID from 'cids';
 import { ComposeGenerator, MODULE_KEY } from '../../lib/compose';
 
 const DEFAULT_OPTS = {
@@ -102,16 +103,20 @@ describe('lib/compose', () => {
     describe('unmount', () => {
 
       it('simple', async () => {
+
+        const WRONG_MESG = `[${MODULE_KEY}] generate Error: Not Support`;
         const generator = { match: jest.fn(), generate: jest.fn() };
         compose.mount(generator);
         compose.umount(generator);
-        await compose.generate({});
+
+        await expect(compose.generate({})).rejects.toThrow(WRONG_MESG);
 
         expect(generator.match).not.toBeCalled();
         expect(generator.generate).not.toBeCalled();
 
         compose.umount(generator);
-        await compose.generate({});
+        await expect(compose.generate({})).rejects.toThrow(WRONG_MESG);
+
         expect(generator.match).not.toBeCalled();
         expect(generator.generate).not.toBeCalled();
       });
@@ -121,12 +126,14 @@ describe('lib/compose', () => {
     describe('generate', () => {
 
       it('simple', async () => {
+
+        const WRONG_MESG = `[${MODULE_KEY}] generate Error: Not Support`;
         const generator = { match: jest.fn(), generate: jest.fn() };
         compose.mount(generator);
 
         const target = Symbol();
         generator.match.mockReturnValue(false);
-        await compose.generate(target);
+        await expect(compose.generate(target)).rejects.toThrow(WRONG_MESG);
 
         expect(generator.match).toBeCalledTimes(1);
         expect(generator.match).toBeCalledWith(target);
@@ -135,6 +142,7 @@ describe('lib/compose', () => {
 
         const target1 = Symbol();
         generator.match.mockReturnValue(true);
+        generator.generate.mockResolvedValueOnce(new CID('QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH'));
         await compose.generate(target1);
 
         expect(generator.match).toBeCalledTimes(1);
@@ -146,7 +154,7 @@ describe('lib/compose', () => {
 
         compose.mount(generator);
         generator.match.mockReturnValue(false);
-        await compose.generate(target);
+        await expect(compose.generate(target)).rejects.toThrow(WRONG_MESG);
 
         expect(generator.match).toBeCalledTimes(2);
         expect(generator.match).toBeCalledWith(target);
@@ -154,6 +162,7 @@ describe('lib/compose', () => {
         generator.match.mockReset();
 
         generator.match.mockReturnValue(true);
+        generator.generate.mockResolvedValueOnce(new CID('QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH'));
         await compose.generate(target1);
 
         expect(generator.match).toBeCalledTimes(1);

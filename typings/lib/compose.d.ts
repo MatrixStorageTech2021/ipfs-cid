@@ -117,6 +117,7 @@ export type Opts = {
      */
     multibaseName?: string;
 };
+import CID from "cids";
 declare const GENERATORS: unique symbol;
 declare const OPTIONS: unique symbol;
 export {};

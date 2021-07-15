@@ -3,9 +3,9 @@ export class Uint8ArrayGenerator {
     /**
      * 创建计算器实例
      * @static
-     * @return {Uint8Generator}
+     * @return {Uint8ArrayGenerator}
      */
-    static createInstance(): any;
+    static createInstance(): Uint8ArrayGenerator;
     /**
      *初始化
      * @param {any} generator DAGNodeGenerator实例
@@ -14,17 +14,17 @@ export class Uint8ArrayGenerator {
     init(generator: any): boolean;
     /**
      *匹配方法
-     * @param {import("../engine").Target} target 计算目标
+     * @param {import("./compose").Target} target 计算目标
      * @return {boolean} true:匹配/false:不匹配
      */
-    match(target: any): boolean;
+    match(target: import("./compose").Target): boolean;
     /**
      *
      * @param {AsyncIterable<Uint8Array>} target 计算目标
-     * @param {import("../engine").Opts} opts 计算可选项
+     * @param {import("./compose").Opts} opts 计算可选项
      * @return {import("cids")}
      */
-    generate(target: AsyncIterable<Uint8Array>, opts: any): import("cids");
+    generate(target: AsyncIterable<Uint8Array>, opts: import("./compose").Opts): import("cids");
     [DAGNODE_GENERATOR]: any;
 }
 declare const DAGNODE_GENERATOR: unique symbol;

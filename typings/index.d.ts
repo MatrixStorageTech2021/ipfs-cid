@@ -1,3 +1,8 @@
-export { ComposeGenerator } from "./compose.js";
-export { DAGNodeGenerator } from "./dag_node.js";
-export { Uint8ArrayGenerator } from "./uint8_array.js";
+/**
+ *构建生成器
+ * @param {import('./compose').Opts} opts 可选项
+ * @return {ComposeGenerator} cid生成器
+ */
+export function createGenerator(opts: any): ComposeGenerator;
+export * from "./lib/index.js";
+import { ComposeGenerator } from "./lib/index.js";

@@ -3,9 +3,9 @@ export class Uint8ArrayGenerator {
     /**
      * 创建计算器实例
      * @static
-     * @return {Uint8Generator}
+     * @return {Uint8ArrayGenerator}
      */
-    static createInstance(): any;
+    static createInstance(): Uint8ArrayGenerator;
     /**
      *初始化
      * @param {any} generator DAGNodeGenerator实例

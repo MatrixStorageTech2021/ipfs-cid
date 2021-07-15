@@ -14,10 +14,10 @@ export class DAGNodeGenerator {
     constructor(maxLinks?: number);
     /**
      *匹配方法
-     * @param {import("../engine").Target} target 计算目标
+     * @param {import("./compose").Target} target 计算目标
      * @return {boolean} true:匹配/false:不匹配
      */
-    match(target: any): boolean;
+    match(target: import("./compose").Target): boolean;
     /**
      * @async
      * @param {AsyncIterable<DAGNode>} target 计算目标
