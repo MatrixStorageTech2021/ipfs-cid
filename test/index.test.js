@@ -6,14 +6,14 @@
  */
 
 
-import { createGenerator,ComposeGenerator,DAGNodeGenerator,Uint8ArrayGenerator,AdapterGenerator } from '../index.js';
+import { createGenerator, ComposeGenerator, DAGNodeGenerator, Uint8ArrayGenerator, AdapterGenerator } from '../index.js';
 import CID from 'cids';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const HELLO_PATH = path.join(process.cwd(), 'test', 'fixtures', 'simple', 'HelloWorld.txt');
 const EMPTY_PATH = path.join(process.cwd(), 'test', 'fixtures', 'simple', 'empty.file');
 const SIMPLE_PATH = path.join(process.cwd(), 'test', 'fixtures', 'simple', '43.75MB.file');
-import * as fs from 'fs';
-import * as path from 'path';
 
 const DEFAULT_OPTS = {
   chunk: 262144,
@@ -25,7 +25,7 @@ const DEFAULT_OPTS = {
 
 describe('index.test.js', () => {
 
-  it('export match', ()=>{
+  it('export match', () => {
     expect(ComposeGenerator).toBeInstanceOf(Function);
     expect(DAGNodeGenerator).toBeInstanceOf(Function);
     expect(Uint8ArrayGenerator).toBeInstanceOf(Function);
@@ -33,39 +33,39 @@ describe('index.test.js', () => {
     expect(createGenerator).toBeInstanceOf(Function);
   });
 
-  describe('createGenerator',()=>{
+  describe('createGenerator', () => {
 
-    it('simple',async ()=>{
-      
+    it('simple', async () => {
+
       const generator = createGenerator();
       expect(generator).toBeInstanceOf(ComposeGenerator);
 
-        const helloContent = fs.createReadStream(HELLO_PATH);
-        const helloCid = await generator.generate(trasformUint8Array(helloContent));
+      const helloContent = fs.createReadStream(HELLO_PATH);
+      const helloCid = await generator.generate(trasformUint8Array(helloContent));
 
-        expect(helloCid).toBeInstanceOf(CID);
-        expect(helloCid.toString()).toBe('QmXxT7EkBJ3oRerJLWMeQ1pSne9EdVSZn1p1Bvn7KgwNTK');
+      expect(helloCid).toBeInstanceOf(CID);
+      expect(helloCid.toString()).toBe('QmXxT7EkBJ3oRerJLWMeQ1pSne9EdVSZn1p1Bvn7KgwNTK');
 
-        const emptyContent = fs.createReadStream(EMPTY_PATH);
-        const emptyCid = await generator.generate(trasformUint8Array(emptyContent));
+      const emptyContent = fs.createReadStream(EMPTY_PATH);
+      const emptyCid = await generator.generate(trasformUint8Array(emptyContent));
 
-        expect(emptyCid).toBeInstanceOf(CID);
-        expect(emptyCid.toString()).toBe('QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH');
+      expect(emptyCid).toBeInstanceOf(CID);
+      expect(emptyCid.toString()).toBe('QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH');
 
-        const simpleContent = fs.createReadStream(SIMPLE_PATH, { highWaterMark: DEFAULT_OPTS.chunk });
-        const simpleCid = await generator.generate(trasformUint8Array(simpleContent));
+      const simpleContent = fs.createReadStream(SIMPLE_PATH, { highWaterMark: DEFAULT_OPTS.chunk });
+      const simpleCid = await generator.generate(trasformUint8Array(simpleContent));
 
-        expect(simpleCid).toBeInstanceOf(CID);
-        expect(simpleCid.toString()).toBe('QmaL1KiQRV8secNszpjjFPg722T53c77k2dz5UsNua59ZT');
+      expect(simpleCid).toBeInstanceOf(CID);
+      expect(simpleCid.toString()).toBe('QmaL1KiQRV8secNszpjjFPg722T53c77k2dz5UsNua59ZT');
 
-        const simpleSlowContent = fs.createReadStream(SIMPLE_PATH);
-        const simpleSlowCid = await generator.generate(trasformUint8Array(simpleSlowContent));
+      const simpleSlowContent = fs.createReadStream(SIMPLE_PATH);
+      const simpleSlowCid = await generator.generate(trasformUint8Array(simpleSlowContent));
 
-        expect(simpleSlowCid).toBeInstanceOf(CID);
-        expect(simpleSlowCid.toString()).toBe('QmaL1KiQRV8secNszpjjFPg722T53c77k2dz5UsNua59ZT');
-      
+      expect(simpleSlowCid).toBeInstanceOf(CID);
+      expect(simpleSlowCid.toString()).toBe('QmaL1KiQRV8secNszpjjFPg722T53c77k2dz5UsNua59ZT');
+
     });
-    
+
   });
 
 });
