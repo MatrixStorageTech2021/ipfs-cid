@@ -4,14 +4,14 @@
  * @author kiba.x.zhao <kiba.rain@qq.com>
  * @license MIT
  */
+'use strict';
 
 
-import { jest } from '@jest/globals';
-import { AdapterGenerator, MODULE_KEY } from '../../lib/adapter';
-import { ComposeGenerator } from '../../lib/compose.js';
-import { GENERATOR_TYPE } from '../../lib/constants.js';
-import { createAsyncIterable, joinAsyncIterable } from '../../lib/utils.js';
-import faker from 'faker';
+const { AdapterGenerator, MODULE_KEY } = require('../../lib/adapter');
+const { ComposeGenerator } = require('../../lib/compose');
+const { GENERATOR_TYPE } = require('../../lib/constants');
+const { createAsyncIterable, joinAsyncIterable } = require('../../lib/utils');
+const faker = require('faker');
 
 class ModelClass {
 

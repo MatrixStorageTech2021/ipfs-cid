@@ -22,5 +22,5 @@ export class AdapterGenerator {
     [COMPOSE_GENERATOR]: ComposeGenerator;
 }
 declare const COMPOSE_GENERATOR: unique symbol;
-import { ComposeGenerator } from "./compose.js";
+import { ComposeGenerator } from "./compose";
 export {};

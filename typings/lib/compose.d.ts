@@ -1,3 +1,36 @@
+/**
+ * CID类型
+ */
+export type CID = import("cids");
+/**
+ * 计算目标
+ */
+export type Target = Uint8Array | Blob | string | Iterable<Uint8Array> | Iterable<number> | AsyncIterable<Uint8Array> | ReadableStream<Uint8Array>;
+/**
+ * 计算可选项
+ */
+export type Opts = {
+    /**
+     * 拆分文件大小
+     */
+    chunk?: number;
+    /**
+     * 计算的hash算法名称
+     */
+    algHashName?: string;
+    /**
+     * cid版本号
+     */
+    version?: number;
+    /**
+     * cid编码
+     */
+    codec?: string;
+    /**
+     * multibase名称
+     */
+    multibaseName?: string;
+};
 export const MODULE_KEY: string;
 /**
  * CID类型
@@ -44,6 +77,9 @@ export const MODULE_KEY: string;
 * @param {Opts} opts 计算可选参数
 * @returns {Promise<import("cids")>} 计算出的cid对象
 */
+/**
+
+*/
 export class ComposeGenerator {
     /**
      * 创建计算器实例
@@ -84,40 +120,7 @@ export class ComposeGenerator {
     private readonly [GENERATORS];
     [OPTIONS]: Opts;
 }
-/**
- * CID类型
- */
-export type CID = import("cids");
-/**
- * 计算目标
- */
-export type Target = Uint8Array | Blob | string | Iterable<Uint8Array> | Iterable<number> | AsyncIterable<Uint8Array> | ReadableStream<Uint8Array>;
-/**
- * 计算可选项
- */
-export type Opts = {
-    /**
-     * 拆分文件大小
-     */
-    chunk?: number;
-    /**
-     * 计算的hash算法名称
-     */
-    algHashName?: string;
-    /**
-     * cid版本号
-     */
-    version?: number;
-    /**
-     * cid编码
-     */
-    codec?: string;
-    /**
-     * multibase名称
-     */
-    multibaseName?: string;
-};
-import CID from "cids";
+import CID = require("cids");
 declare const GENERATORS: unique symbol;
 declare const OPTIONS: unique symbol;
 export {};

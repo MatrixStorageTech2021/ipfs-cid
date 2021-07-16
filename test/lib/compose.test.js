@@ -4,11 +4,11 @@
  * @author kiba.x.zhao <kiba.rain@qq.com>
  * @license MIT
  */
+'use strict';
 
 
-import { jest } from '@jest/globals';
-import CID from 'cids';
-import { ComposeGenerator, MODULE_KEY } from '../../lib/compose';
+const CID = require('cids');
+const { ComposeGenerator, MODULE_KEY } = require('../../lib/compose');
 
 const DEFAULT_OPTS = {
   chunk: 262144,

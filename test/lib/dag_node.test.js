@@ -4,17 +4,17 @@
  * @author kiba.x.zhao k<iba.rain@qq.com>
  * @license MIT
  */
+'use strict';
 
 
-import ipld from 'ipld-dag-pb';
-import { UnixFS } from 'ipfs-unixfs';
-import { GENERATOR_TYPE } from '../../lib/constants.js';
-import { DAGNodeGenerator, MODULE_KEY } from '../../lib/dag_node.js';
-import { createAsyncIterable } from '../../lib/utils.js';
-import CID from 'cids';
-import faker from 'faker';
+const { DAGNode } = require('ipld-dag-pb');
+const { UnixFS } = require('ipfs-unixfs');
+const { GENERATOR_TYPE } = require('../../lib/constants');
+const { DAGNodeGenerator, MODULE_KEY } = require('../../lib/dag_node');
+const { createAsyncIterable } = require('../../lib/utils');
+const CID = require('cids');
+const faker = require('faker');
 
-const { DAGNode } = ipld;
 const DEFAULT_OPTS = {
   chunk: 262144,
   algHashName: 'sha2-256',

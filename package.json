@@ -4,7 +4,6 @@
   "description": "sdk for create ipfs cid ",
   "main": "index.js",
   "types": "typings/index.d.ts",
-  "type": "module",
   "scripts": {
     "docs": "jsdoc -c conf.json",
     "build": "tsc -d",

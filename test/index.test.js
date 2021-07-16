@@ -4,12 +4,13 @@
  * @author kiba.x.zhao <kiba.rain@qq.com>
  * @license MIT
  */
+'use strict';
 
 
-import { createGenerator, ComposeGenerator, DAGNodeGenerator, Uint8ArrayGenerator, AdapterGenerator } from '../index.js';
-import CID from 'cids';
-import * as fs from 'fs';
-import * as path from 'path';
+const { createGenerator, ComposeGenerator, DAGNodeGenerator, Uint8ArrayGenerator, AdapterGenerator } = require('../index');
+const CID = require('cids');
+const fs = require('fs');
+const path = require('path');
 
 const HELLO_PATH = path.join(process.cwd(), 'test', 'fixtures', 'simple', 'HelloWorld.txt');
 const EMPTY_PATH = path.join(process.cwd(), 'test', 'fixtures', 'simple', 'empty.file');

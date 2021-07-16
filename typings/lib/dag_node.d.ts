@@ -1,3 +1,7 @@
+/**
+ * 生成可选项
+ */
+export type Opts = import("./compose").Opts;
 export const MODULE_KEY: string;
 export class DAGNodeGenerator {
     /**
@@ -24,13 +28,10 @@ export class DAGNodeGenerator {
      * @param {import("./compose").Opts} opts 计算可选项
      * @return {Promise<CID>} 生成的cid对象
      */
-    generate(target: AsyncIterable<typeof import("ipld-dag-pb/src/dag-node/dagNode")>, opts?: import("./compose").Opts): Promise<CID>;
+    generate(target: AsyncIterable<DAGNode>, opts?: import("./compose").Opts): Promise<CID>;
     [MAX_LINKS]: number;
 }
-/**
- * 生成可选项
- */
-export type Opts = import("./compose").Opts;
-import CID from "cids";
+import { DAGNode } from "ipld-dag-pb/src/types";
+import CID = require("cids");
 declare const MAX_LINKS: unique symbol;
 export {};

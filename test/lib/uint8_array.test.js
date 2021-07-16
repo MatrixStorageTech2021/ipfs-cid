@@ -4,16 +4,17 @@
  * @author kiba.x.zhao <kiba.rain@qq.com>
  * @license MIT
  */
+'use strict';
 
 
-import { MODULE_KEY, Uint8ArrayGenerator } from '../../lib/uint8_array.js';
-import { GENERATOR_TYPE } from '../../lib/constants.js';
-import { DAGNodeGenerator } from '../../lib/dag_node.js';
-import { createAsyncIterable } from '../../lib/utils.js';
-import CID from 'cids';
-import faker from 'faker';
-import * as fs from 'fs';
-import * as path from 'path';
+const { MODULE_KEY, Uint8ArrayGenerator } = require('../../lib/uint8_array');
+const { GENERATOR_TYPE } = require('../../lib/constants');
+const { DAGNodeGenerator } = require('../../lib/dag_node');
+const { createAsyncIterable } = require('../../lib/utils');
+const CID = require('cids');
+const faker = require('faker');
+const fs = require('fs');
+const path = require('path');
 
 const HELLO_PATH = path.join(process.cwd(), 'test', 'fixtures', 'simple', 'HelloWorld.txt');
 const EMPTY_PATH = path.join(process.cwd(), 'test', 'fixtures', 'simple', 'empty.file');
@@ -97,7 +98,7 @@ describe('lib/uint8_array', () => {
         expect(simpleCid).toBeInstanceOf(CID);
         expect(simpleCid.toString()).toBe('QmaL1KiQRV8secNszpjjFPg722T53c77k2dz5UsNua59ZT');
 
-        const simpleSlowContent = fs.createReadStream(SIMPLE_PATH);
+        const simpleSlowContent = fs.createReadStream(SIMPLE_PATH, { highWaterMark: DEFAULT_OPTS.chunk + 10 });
         const simpleSlowCid = await uint8ArrayGenerator.generate(trasformUint8Array(simpleSlowContent), DEFAULT_OPTS);
 
         expect(simpleSlowCid).toBeInstanceOf(CID);

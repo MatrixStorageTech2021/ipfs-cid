@@ -1,3 +1,4 @@
+export const MODULE_KEY: string;
 /**
  *创建异步可迭代对象
  * @async
@@ -14,4 +15,3 @@ export function createAsyncIterable(...values: Array<any>): AsyncGenerator<any, 
  * @param {...AsyncGenerator<any> | any[] | Iterable<any>} args 可迭代对象
  */
 export function joinAsyncIterable(...args: (AsyncGenerator<any> | any[] | Iterable<any>)[]): AsyncGenerator<any, void, unknown>;
-export const MODULE_KEY: string;
