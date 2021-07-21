@@ -18,6 +18,7 @@
     "typings",
     "package.json",
     "lib",
+    "extensions",
     "index.js"
   ],
   "keywords": [

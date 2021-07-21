@@ -1,5 +1,5 @@
 {
-  "include": ["bin/*.js","lib/**/*","plugins/**/*","index.js"],
+  "include": ["bin/*.js","lib/**/*","extensions/**/*","index.js"],
   "exclude":["node_modules/**/*"],
   "compilerOptions": {
     "allowJs": true,
