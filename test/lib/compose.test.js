@@ -73,7 +73,7 @@ describe('lib/compose', () => {
         expect(initGenerator.match).not.toBeCalled();
         expect(initGenerator.generate).not.toBeCalled();
         expect(nextGenerator.init).toBeCalledTimes(2);
-        expect(nextGenerator.init.mock.calls).toEqual([[ generator ], [ initGenerator ]]);
+        expect(nextGenerator.init.mock.calls).toEqual([[ initGenerator ], [ generator ]]);
         expect(nextGenerator.match).not.toBeCalled();
         expect(nextGenerator.generate).not.toBeCalled();
 
